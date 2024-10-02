@@ -1,0 +1,10 @@
+一、修改注册表键值
+如果下bai面2个键值du在注册表里丢失了,在浏览器里面怎zhi么设置默dao认浏览器都没有用.
+( 如果键值没有的时候,自己手动添加 )
+
+开始—命令行–regedit
+
+1.找到HKEY_CLASSES_ROOT\http\shell\open\command，双击"默认"，将要用浏览器的可执行 文件的完全路径输入到这里，例如：输入“C:\Program Files\Internet Explorer\iexplore.exe”；
+
+2.然后找到HKEY_CLASSES_ROOT\http\shell\open\ddeexec\Application，双击"默认"，设置浏览器名，如果是Firefox则输入Firefox，如果是IE则输入IExplore。如果写错,在浏览器里设置为默认浏览器的时候,会提示你当前的浏览器不是默认的.
+
