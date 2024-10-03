@@ -1,0 +1,5 @@
+将以下代码复制到记事本另存为：清理图标缓存.bat 文件，然后双击运行此批处理文件即可。
+
+reg delete "HKEY_CURRENT_USERSoftwareClassesLocal SettingsSoftwareMicrosoftWindowsCurrentVersionTrayNotify" /va /f
+taskkill /f /im explorer.exe & start explorer.exe
+注意：要新建一个记事本（后缀为.txt），把上述代码复制进去之后保存，更改后缀名为.bat文件，然后双击该.bat文件。
