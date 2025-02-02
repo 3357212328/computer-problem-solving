@@ -1,0 +1,3 @@
+# 提供下载链接
+from google.colab import files
+files.download("文件名称.后缀")
