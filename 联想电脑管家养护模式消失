@@ -1,0 +1,1 @@
+修改注册表：HKEY_LOCAL_MACHINE\SOFTWARE\Lenovo\PCManager\BatteryCache，把值改为0
