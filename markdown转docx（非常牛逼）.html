@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- 声明文档使用的语言为英语 -->
+<html lang="en">
+ 
+<head>
+    <!-- 设置字符编码为 UTF-8，支持多种语言字符 -->
+    <meta charset="UTF-8">
+    <!-- 确保页面在不同设备上能正确显示，初始缩放比例为 1.0 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 设置网页标题 -->
+    <title>AI Markdown To Office</title>
+    <!-- 引入 Tailwind CSS 框架，用于快速搭建页面样式 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Markdown 解析库，用于将 Markdown 文本转换为 HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <!-- 引入文件保存库，用于保存文件 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        /* 设置页面主体样式 */
+        body {
+            /* 使用 Flexbox 布局，将子元素水平和垂直居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 设置最小高度为视口高度，确保内容垂直居中 */
+            min-height: 100vh;
+            /* 去除默认外边距 */
+            margin: 0;
+            /* 设置内边距为 4 像素 */
+            padding: 4px;
+            /* 盒模型计算方式，使宽度和高度包含内边距和边框 */
+            box-sizing: border-box;
+        }
+ 
+        /* 设置 #markdown-input 和 #html-output 元素的通用样式 */
+        #markdown-input,
+        #html-output {
+            /* 设置宽度为 210 毫米，模拟 A4 纸宽度 */
+            width: 210mm;
+            /* 盒模型计算方式，使宽度包含内边距和边框 */
+            box-sizing: border-box;
+        }
+ 
+        /* 设置打印页面的样式 */
+        [url=home.php?mod=space&uid=1953840]@page[/url] {
+            /* 设置页面大小为 A4 */
+            size: A4;
+            /* 设置页面边距为 2.54 厘米 */
+            margin: 2.54cm;
+        }
+ 
+        /* 设置主容器的样式 */
+       .main-container {
+            /* 使用 Flexbox 布局，将子元素垂直排列 */
+            display: flex;
+            flex-direction: column;
+            /* 将子元素水平居中 */
+            align-items: center;
+            /* 设置容器宽度为 100% */
+            width: 100%;
+        }
+ 
+        /* 设置按钮组的样式 */
+       .button-group {
+            /* 使用 Flexbox 布局，将子元素水平排列 */
+            display: flex;
+            flex-direction: row;
+            /* 将子元素水平居中 */
+            justify-content: center;
+            /* 将子元素垂直居中 */
+            align-items: center;
+            /* 设置上方外边距为 10 像素 */
+            margin-top: 10px;
+        }
+ 
+        /* 为输出框中的 HTML 元素添加基本样式 */
+        #html-output h1,
+        #html-output h2,
+        #html-output h3,
+        #html-output h4,
+        #html-output h5,
+        #html-output h6 {
+            font-weight: bold;
+        }
+ 
+        /* 添加表格样式 */
+        #html-output table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+ 
+        #html-output th,
+        #html-output td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+ 
+<body class="p-4">
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 页面标题 -->
+        <h1 class="text-2xl font-bold mb-4">AI Markdown To Office</h1>
+        <!-- 输入 Markdown 文本的文本框 -->
+        <textarea id="markdown-input" class="p-2 border rounded mb-4" rows="15"></textarea>
+        <!-- 按钮组 -->
+        <div class="button-group">
+            <!-- 调整顺序：选择文件按钮移到最前面 -->
+            <button id="select-file-button" class="px-4 py-2 bg-purple-600 text-white rounded">选择Markdown文件</button>
+            <!-- 转换按钮，点击后将 Markdown 转换为 HTML -->
+            <button id="convert-button" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">预览HTML</button>
+            <!-- 保存为 HTML 按钮，点击后保存转换后的 HTML 为文件 -->
+            <button id="save-as-html-button" class="px-4 py-2 bg-green-600 text-white rounded ml-2">保存为HTML</button>
+            <!-- 保存为 Word 按钮，点击后保存转换后的 HTML 为 Word 文件 -->
+            <button id="save-as-word-button" class="px-4 py-2 bg-red-600 text-white rounded ml-2">保存为Word</button>
+        </div>
+        <!-- 隐藏的文件输入元素 -->
+        <input type="file" id="markdown-file-input" accept=".md" style="display: none;">
+        <!-- 显示转换后 HTML 的容器 -->
+        <div id="html-output" class="mt-4 p-4 border rounded bg-gray-50"></div>
+    </div>
+    <script>
+        // 页面加载完成后执行以下代码
+        document.addEventListener('DOMContentLoaded', () => {
+            // 创建 Markdown 解析器实例
+            const md = window.markdownit();
+ 
+            // 定义转换函数，将 Markdown 转换为 HTML
+            const convert = () => {
+                // 获取输入的 Markdown 文本
+                const markdown = document.getElementById('markdown-input').value;
+                // 将 Markdown 转换为 HTML 并显示在 #html-output 元素中
+                document.getElementById('html-output').innerHTML = md.render(markdown);
+            };
+ 
+            // 为转换按钮添加点击事件监听器，点击时调用转换函数
+            document.getElementById('convert-button').addEventListener('click', convert);
+ 
+            // 页面加载完成后自动执行一次转换操作
+            convert();
+ 
+            // 修正：保存为 Word 按钮点击事件（生成兼容Word的HTML）
+            document.getElementById('save-as-word-button').addEventListener('click', () => {
+                const htmlContent = document.getElementById('html-output').innerHTML;
+                // 构建包含Word兼容样式的HTML
+                const wordHtml = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            font-family: "微软雅黑", sans-serif; 
+            font-size: 12pt; 
+            line-height: 1.5; 
+            margin: 2.54cm; /* 模拟Word默认页边距 */
+        }
+        h1 { font-size: 16pt; margin: 24px 0 12px; }
+        h2 { font-size: 14pt; margin: 20px 0 10px; }
+        h3 { font-size: 12pt; margin: 16px 0 8px; }
+        p { text-indent: 2em; margin: 8px 0; } /* 首行缩进2字符 */
+        ul, ol { padding-left: 2em; }
+        table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+        th, td { border: 1px solid #000; padding: 8px; }
+    </style>
+</head>
+<body>
+    ${htmlContent}
+</body>
+</html>`;
+                // 保存为.html文件（用户可直接用Word打开后另存为.docx）
+                const blob = new Blob([wordHtml], { type: 'text/html' });
+                saveAs(blob, 'converted_document_for_word.html');
+                alert('已生成兼容Word的HTML文件，操作步骤：\n1. 用Microsoft Word打开该文件\n2. 点击左上角"文件"→"另存为"\n3. 选择保存类型为"Word文档（.docx）"');
+            });
+ 
+            // 为保存为 HTML 按钮添加点击事件监听器
+            document.getElementById('save-as-html-button').addEventListener('click', () => {
+                // 获取转换后的 HTML 内容
+                const htmlContent = document.getElementById('html-output').innerHTML;
+                // 创建 Blob 对象，将 HTML 内容封装为文件对象，添加表格样式
+                const blob = new Blob([`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    ${htmlContent}
+</body>
+</html>`], { type: 'text/html' });
+                // 调用 saveAs 函数保存文件为 HTML 文件
+                saveAs(blob, 'converted_document.html');
+            });
+ 
+            // 新增：选择文件按钮点击事件
+            document.getElementById('select-file-button').addEventListener('click', () => {
+                document.getElementById('markdown-file-input').click();
+            });
+ 
+            // 新增：文件选择后读取内容
+            document.getElementById('markdown-file-input').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        // 将文件内容填充到输入框并触发转换
+                        document.getElementById('markdown-input').value = event.target.result;
+                        convert();
+                    };
+                    reader.readAsText(file); // 默认使用UTF-8编码读取
+                }
+            });
+        });
+    </script>
+</body>
+ 
+</html>
