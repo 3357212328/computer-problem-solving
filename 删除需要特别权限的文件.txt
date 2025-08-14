@@ -1,0 +1,3 @@
+takeown /f "D:\nodejs" /r /d y
+icacls "D:\nodejs" /grant %username%:F /t
+rd /s /q "D:\nodejs"
