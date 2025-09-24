@@ -1,0 +1,3 @@
+在toml文件中添加这个
+[tool.uv]
+required-environments = ["platform_system == 'Windows' and platform_machine == 'AMD64'"]
