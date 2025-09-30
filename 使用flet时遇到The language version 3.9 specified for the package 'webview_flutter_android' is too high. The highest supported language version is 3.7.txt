@@ -1,0 +1,3 @@
+在pyproject.toml文件里添加：
+[tool.flet.flutter.pubspec.dependency_overrides]
+webview_flutter_android = "4.10.1"
