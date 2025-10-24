@@ -1,0 +1,17 @@
+python安装：
+
+
+
+uv python install 3.11 --install-dir D:\uv\python
+
+
+
+
+
+
+uv 缓存路径：
+
+
+
+setx UV_CACHE_DIR "D:\uv\cache"
+$env:UV_CACHE_DIR = "D:\uv\cache"
