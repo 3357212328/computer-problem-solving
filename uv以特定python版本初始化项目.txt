@@ -1,0 +1,1 @@
+uv init my_project --python 3.11
