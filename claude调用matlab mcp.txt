@@ -1,0 +1,29 @@
+Method 1. Directly install matlab-agentic-toolkit
+
+In powershell:
+# git clone https://github.com/matlab/matlab-agentic-toolkit.git
+# cd matlab-agentic-toolkit
+
+launch Claude CLI (or other agents), and ask
+
+"Set up the MATLAB Agentic Toolkit"
+
+Method 2. Install matlab-mcp-core-server + skills seprately
+
+Download the Latest Release from https://github.com/matlab/matlab-mcp-core-server
+In powershell
+
+# claude mcp add --transport stdio matlab -- # \path_to_mcp\matlab-mcp-core-server-win64.exe
+
+# claude plugin marketplace add "https://github.com/matlab/matlab-agentic-toolkit"
+# claude plugin install matlab-core@matlab-agentic-toolkit3. Verify Install
+
+Open Claude CLI, and ask
+What version of MATLAB are you connected to, and what toolboxes are currently available?
+
+or run
+# claude mcp list
+
+and ask if the skills have been installed
+
+"List your active marketplace plugins and skills"
