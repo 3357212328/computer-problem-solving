@@ -16,7 +16,9 @@ In powershell
 # claude mcp add --transport stdio matlab -- # \path_to_mcp\matlab-mcp-core-server-win64.exe
 
 # claude plugin marketplace add "https://github.com/matlab/matlab-agentic-toolkit"
-# claude plugin install matlab-core@matlab-agentic-toolkit3. Verify Install
+# claude plugin install matlab-core@matlab-agentic-toolkit
+
+3. Verify Install
 
 Open Claude CLI, and ask
 What version of MATLAB are you connected to, and what toolboxes are currently available?
