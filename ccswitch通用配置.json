@@ -1,0 +1,65 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "env": {
+    "DISABLE_AUTOUPDATER": "1",
+    "ENABLE_TOOL_SEARCH": "true"
+  },
+   "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": false,
+    "asta@365-skills": false,
+    "drawio@365-skills": true,
+    "paper-fetch@365-skills": false,
+    "scholar-deep-research@365-skills": false,
+    "semanticscholar@365-skills": false,
+    "ppt-master@ppt-master": false,
+    "research-writing-assistant@skills-dir": false,
+    "aerospace@matlab-agentic-toolkits": true,
+    "ai-and-statistics@matlab-agentic-toolkits": true,
+    "automotive@matlab-agentic-toolkits": true,
+    "cloud-solutions@matlab-agentic-toolkits": true,
+    "computational-biology@matlab-agentic-toolkits": true,
+    "computational-finance@matlab-agentic-toolkits": true,
+    "control-systems@matlab-agentic-toolkits": true,
+    "image-processing-and-computer-vision@matlab-agentic-toolkits": true,
+    "math-and-optimization@matlab-agentic-toolkits": true,
+    "matlab-app-building@matlab-agentic-toolkits": true,
+    "matlab-core@matlab-agentic-toolkits": true,
+    "matlab-data-import-and-analysis@matlab-agentic-toolkits": true,
+    "matlab-environment-and-settings@matlab-agentic-toolkits": true,
+    "matlab-external-language-interfaces@matlab-agentic-toolkits": true,
+    "matlab-programming@matlab-agentic-toolkits": true,
+    "matlab-software-development@matlab-agentic-toolkits": true,
+    "parallel-computing@matlab-agentic-toolkits": true,
+    "radar@matlab-agentic-toolkits": true,
+    "reporting-and-database-access@matlab-agentic-toolkits": true,
+    "rf-and-mixed-signal@matlab-agentic-toolkits": true,
+    "robotics-and-autonomous-systems@matlab-agentic-toolkits": true,
+    "signal-processing@matlab-agentic-toolkits": true,
+    "test-and-measurement@matlab-agentic-toolkits": true,
+    "wireless-communications@matlab-agentic-toolkits": true,
+    "model-based-design-core@matlab-agentic-toolkits": true,
+    "model-based-system-engineering@matlab-agentic-toolkits": true,
+    "verification-validation-and-test@matlab-agentic-toolkits": true,
+    "code-generation@matlab-agentic-toolkits": true,
+    "simulink-simulation@matlab-agentic-toolkits": true,
+    "mattpocock-skills@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ppt-master": {
+      "source": {
+        "source": "file",
+        "path": "D:\\ppt-master\\ppt-master\\.claude-plugin\\marketplace.json"
+      }
+    },
+    "matlab-agentic-toolkits": {
+      "source": {
+        "source": "directory",
+        "path": "C:\\Users\\33572\\.matlab\\agentic-toolkits"
+      }
+    }
+  }
+}
