@@ -3,27 +3,19 @@
     "commit": "",
     "pr": ""
   },
-  "env": {
-    "DISABLE_AUTOUPDATER": "1",
-    "ENABLE_TOOL_SEARCH": "true"
-  },
-   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": false,
-    "asta@365-skills": false,
-    "drawio@365-skills": true,
-    "paper-fetch@365-skills": false,
-    "scholar-deep-research@365-skills": false,
-    "semanticscholar@365-skills": false,
-    "ppt-master@ppt-master": false,
-    "research-writing-assistant@skills-dir": false,
+  "effortLevel": "high",
+  "enabledPlugins": {
     "aerospace@matlab-agentic-toolkits": true,
     "ai-and-statistics@matlab-agentic-toolkits": true,
+    "asta@365-skills": false,
     "automotive@matlab-agentic-toolkits": true,
     "cloud-solutions@matlab-agentic-toolkits": true,
+    "code-generation@matlab-agentic-toolkits": true,
     "computational-biology@matlab-agentic-toolkits": true,
     "computational-finance@matlab-agentic-toolkits": true,
     "control-systems@matlab-agentic-toolkits": true,
+    "drawio@365-skills": true,
+    "frontend-design@claude-plugins-official": true,
     "image-processing-and-computer-vision@matlab-agentic-toolkits": true,
     "math-and-optimization@matlab-agentic-toolkits": true,
     "matlab-app-building@matlab-agentic-toolkits": true,
@@ -33,33 +25,72 @@
     "matlab-external-language-interfaces@matlab-agentic-toolkits": true,
     "matlab-programming@matlab-agentic-toolkits": true,
     "matlab-software-development@matlab-agentic-toolkits": true,
-    "parallel-computing@matlab-agentic-toolkits": true,
-    "radar@matlab-agentic-toolkits": true,
-    "reporting-and-database-access@matlab-agentic-toolkits": true,
-    "rf-and-mixed-signal@matlab-agentic-toolkits": true,
-    "robotics-and-autonomous-systems@matlab-agentic-toolkits": true,
-    "signal-processing@matlab-agentic-toolkits": true,
-    "test-and-measurement@matlab-agentic-toolkits": true,
-    "wireless-communications@matlab-agentic-toolkits": true,
+    "mattpocock-skills@claude-plugins-official": true,
     "model-based-design-core@matlab-agentic-toolkits": true,
     "model-based-system-engineering@matlab-agentic-toolkits": true,
-    "verification-validation-and-test@matlab-agentic-toolkits": true,
-    "code-generation@matlab-agentic-toolkits": true,
+    "paper-fetch@365-skills": false,
+    "parallel-computing@matlab-agentic-toolkits": true,
+    "ppt-master@ppt-master": false,
+    "radar@matlab-agentic-toolkits": true,
+    "reporting-and-database-access@matlab-agentic-toolkits": true,
+    "research-writing-assistant@skills-dir": false,
+    "rf-and-mixed-signal@matlab-agentic-toolkits": true,
+    "robotics-and-autonomous-systems@matlab-agentic-toolkits": true,
+    "scholar-deep-research@365-skills": false,
+    "semanticscholar@365-skills": false,
+    "signal-processing@matlab-agentic-toolkits": true,
     "simulink-simulation@matlab-agentic-toolkits": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": false,
+    "superpowers@claude-plugins-official": false,
+    "test-and-measurement@matlab-agentic-toolkits": true,
+    "verification-validation-and-test@matlab-agentic-toolkits": true,
+    "wireless-communications@matlab-agentic-toolkits": true,
+    "academic-research-skills@academic-research-skills": false
+  },
+  "env": {
+    "ENABLE_TOOL_SEARCH": "true",
+    "DISABLE_AUTOUPDATER": "1"
   },
   "extraKnownMarketplaces": {
-    "ppt-master": {
+    "anthropic-agent-skills": {
       "source": {
-        "source": "file",
-        "path": "D:\\ppt-master\\ppt-master\\.claude-plugin\\marketplace.json"
+        "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/anthropics/claude-plugins-official.git"
       }
     },
     "matlab-agentic-toolkits": {
       "source": {
-        "source": "directory",
-        "path": "C:\\Users\\33572\\.matlab\\agentic-toolkits"
+        "path": "C:\\Users\\33572\\.matlab\\agentic-toolkits",
+        "source": "directory"
+      }
+    },
+    "ppt-master": {
+      "source": {
+        "path": "D:\\ppt-master\\ppt-master\\.claude-plugin\\marketplace.json",
+        "source": "file"
+      }
+    },
+    "academic-research-skills": {
+      "source": {
+        "source": "github",
+        "repo": "Imbad0202/academic-research-skills"
       }
     }
-  }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [],
+        "matcher": ""
+      }
+    ]
+  },
+  "model": "opus",
+  "theme": "dark"
 }
