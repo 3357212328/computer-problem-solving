@@ -1,0 +1,3 @@
+参考“D:\embeded electronic\stc\STC32G144K246-DEMO-CODE”，将“D:\下载\stm32_project_collection-master\77个stm32项目\intelligent-closestool-master”中的stm32项目移植到当前工作文件夹中的keil项目，直接修改当前文件夹中我已经创建好的keil工程，无需再创建工程，而且在移植过程中你可能还需要引用这些系统头文件（AI_USB.H，STC32G144K246.H，DEF.H等头文件）（直接引用，无需复制到当前文件夹）（按需引用），cpu工作频率设置为120MHz（120MHz系统时钟，由内部 IRC时钟-24MHz，HPLL倍频产生），使用TFPU和DSP进行加速计算（TFPU的频率调到240MHz），对速度有要求的变量要放在edata里面，注意使用C89标准，你可以使用stc-manual这个mcp查询关于stc32g144k246的相关芯片手册和相关论坛内容，通过命令行编译keil工程（运行build.bat编译，编译日志在build.log），所有产生的文件（包括临时文件，测试文件等）必须生成在该文件夹中，禁止生成在其他路径，编译结果应该为0错误0警告，编译日志中不允许出现target not created，编译没问题之后调用合适的子代理进行多维度对抗性代码审查，保证移植后的代码能够在stc32g144k246上正常运行，且功能完整。
+
+当前code rom size模式为huge模式（huge模式下可以用全部的246KB的flash空间），如需要使用large模式请参考“D:\embeded electronic\stc\stc32g144k246_library_large”
